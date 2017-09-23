@@ -12,7 +12,10 @@ public class MyCalendar {
     public static void main(String[] args) {
         Scanner reader = new Scanner(System.in);
         MyCalendar cal = new MyCalendar();
-        System.out.println("Please enter the calendar year you want to generate:");
+        System.out.println("*****************  Welcome To \'My Calendar\'!   *********************\n\n" +
+                "[ My Calendar ] can provide you with a calender" +
+                " from 18th century, and what you need to do is just to enter the year you want to search!\n");
+        System.out.println("Please enter the year to get its calendar:");
         int year = reader.nextInt();
         GenerateCalendar gen = new GenerateCalendar(year);
     }

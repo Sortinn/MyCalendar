@@ -7,14 +7,12 @@ public class GenerateCalendar {
     private final int DAY_29 = 29;
     private final int DAY_30 = 30;
     private final int DAY_31 = 31;
-
-    private String week = "日" + "\t" + "一" + "\t" + "二" + "\t" + "三" + "\t" + "四" + "\t" + "五" + "\t" + "六" + "\t";
+    private String week = "SUN" + "\t" + "MON" + "\t" + "TUE" + "\t" + "WED" + "\t" + "THU" + "\t" + "FRI" + "\t" + "SAT" + "\t";
 
 
     public int findFirstDay(int month, int year) {
         CalculateWeek cal = new CalculateWeek();
         return cal.week(1, month, year);
-
     }
 
     public boolean judgeMonth_30(int month) {
@@ -40,6 +38,9 @@ public class GenerateCalendar {
     public GenerateCalendar(int year) {
         this.formatMap();
         MyCalendar my = new MyCalendar();
+        FindCurrence tag = new FindCurrence();
+        System.out.println("--------------------------\n" +
+                year + "\n");
         for (Map.Entry<Integer, Integer> entry : monthAndDay.entrySet()) {
 
             System.out.println(entry.getKey() + "月");
@@ -51,16 +52,16 @@ public class GenerateCalendar {
             }
 
             if (judgeMonth_30(entry.getKey())) {
-                printDays(findFirstDay(entry.getKey(), year), DAY_30);
+                printDays(findFirstDay(entry.getKey(), year), DAY_30, year, entry.getKey());
                 System.out.println();
             } else if (entry.getKey() == 2) {
                 if (my.isLeapYear(year)) {
-                    printDays(findFirstDay(entry.getKey(), year), DAY_29);
-                } else printDays(findFirstDay(entry.getKey(), year), DAY_28);
+                    printDays(findFirstDay(entry.getKey(), year), DAY_29, year, entry.getKey());
+                } else printDays(findFirstDay(entry.getKey(), year), DAY_28, year, entry.getKey());
 
                 System.out.println();
             } else {
-                printDays(findFirstDay(entry.getKey(), year), DAY_31);
+                printDays(findFirstDay(entry.getKey(), year), DAY_31, year, entry.getKey());
                 System.out.println();
             }
         }
@@ -68,14 +69,20 @@ public class GenerateCalendar {
     }
 
 
-    private void printDays(int tar, int dayOfMonth) {   //tar为每月前的缩进空格数
+    private void printDays(int tar, int dayOfMonth, int year, int month) {   //tar为每月前的缩进空格数
+        FindCurrence tag = new FindCurrence();
         int nextLine = 7 - tar;
         for (int i = 1; i <= dayOfMonth; i++) {
-            System.out.print(i + "\t");
+            if (tag.isNow(i, month, year)) {
+                System.out.print(">" + i + "< ");
+            }else {
+                System.out.print(i + "\t");
+            }
             if ((i - nextLine) % 7 == 0) {
-                System.out.println();
+                System.out.println("\n");
             }
         }
+        System.out.println();
     }
 
 
