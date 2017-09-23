@@ -37,6 +37,7 @@ public class GenerateCalendar {
 
     public GenerateCalendar(int year) {
         this.formatMap();
+        MyCalendar my = new MyCalendar();
         for (Map.Entry<Integer, Integer> entry : monthAndDay.entrySet()) {
 
             System.out.println(entry.getKey() + "月");
@@ -51,7 +52,10 @@ public class GenerateCalendar {
                 printDays(findFirstDay(entry.getKey(), year),30);
                 System.out.println();
             } else if (entry.getKey() == 2) {
-                printDays(findFirstDay(entry.getKey(), year),29);
+                if (my.isLeapYear(year)) {
+                    printDays(findFirstDay(entry.getKey(), year),29);
+                }else printDays(findFirstDay(entry.getKey(), year),28);
+
                 System.out.println();
             } else {
                 printDays(findFirstDay(entry.getKey(), year), 31);
@@ -75,7 +79,7 @@ public class GenerateCalendar {
 
     public static void main(String[] args) {
         System.out.println("以下是结果");
-        GenerateCalendar gene = new GenerateCalendar(2000);
+        GenerateCalendar gene = new GenerateCalendar(2001);
 //        for (int value : gene.monthAndDay.keySet()) {
 //            System.out.println(value);
 //            System.out.println(gene.monthAndDay.get(value) + "天");

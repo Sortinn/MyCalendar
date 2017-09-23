@@ -14,7 +14,6 @@ public class MyCalendar {
         MyCalendar cal = new MyCalendar();
         System.out.println("Please enter the calendar year you want to generate:");
         int year = reader.nextInt();
-        if (cal.isLeapYear(year)) {
-        }
+        GenerateCalendar gen = new GenerateCalendar(year);
     }
 }
