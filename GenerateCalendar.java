@@ -38,7 +38,6 @@ public class GenerateCalendar {
     public GenerateCalendar(int year) {
         this.formatMap();
         MyCalendar my = new MyCalendar();
-        FindCurrence tag = new FindCurrence();
         System.out.println("--------------------------\n" +
                 year + "\n");
         for (Map.Entry<Integer, Integer> entry : monthAndDay.entrySet()) {
@@ -70,7 +69,7 @@ public class GenerateCalendar {
 
 
     private void printDays(int tar, int dayOfMonth, int year, int month) {   //tar为每月前的缩进空格数
-        FindCurrence tag = new FindCurrence();
+        FindCurrent tag = new FindCurrent();
         int nextLine = 7 - tar;
         for (int i = 1; i <= dayOfMonth; i++) {
             if (tag.isNow(i, month, year)) {
