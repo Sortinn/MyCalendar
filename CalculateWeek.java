@@ -71,11 +71,12 @@ public class CalculateWeek {
 
     }
 
-    //public static void main(String[] args) {
-    //CalculateWeek test = new CalculateWeek();
-    // int monthC = test.getMonthCode(2, 2016);
-    //  System.out.println(monthC);
-    //int week = test.week(10, 5, 2018);
-    //  System.out.println(week);
-    //}
+    public static void main(String[] args) {
+        CalculateWeek test = new CalculateWeek();
+//     int monthC = test.getMonthCode(2, 2016);
+//      System.out.println(monthC);
+//        int week = test.week(23, 9, 2017);
+//        System.out.println(week);
+    }
 }
+
